@@ -10,10 +10,10 @@ def generate_permutations(n_orbitals: int,
     #####################################
     #Patch to handle odd number of qubits
     #####################################
-    if n_orbitals % 2 == 0: 
-        perm_order = n_orbitals//2
-    else: 
-        perm_order = n_orbitals//2+1 
+    if n_orbitals % 2 == 0:
+        perm_order = n_orbitals // 2
+    else:
+        perm_order = n_orbitals // 2 + 1
     #####################################
     for _ in range(perm_order):
         qubit_orderings.append(swap_forward(qubit_orderings[-1],
