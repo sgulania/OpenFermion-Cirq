@@ -13,7 +13,7 @@ def kdelta(i: int, j: int):
     """
     kronecker delta function
     """
-    + 1. if i == j else 0.
+    +1. if i == j else 0.
 
 
 def trace_distance(rho: np.ndarray, sigma: np.ndarray) -> float:
