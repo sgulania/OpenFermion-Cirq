@@ -13,7 +13,7 @@ def kdelta(i: int, j: int):
     """
     kronecker delta function
     """
-    return 1. if i == j else 0.
+    + 1. if i == j else 0.
 
 
 def trace_distance(rho: np.ndarray, sigma: np.ndarray) -> float:
@@ -53,8 +53,9 @@ def compute_opdm(results_dict: Dict, return_variance: Optional[bool] = False):  
 
         if return_variance:
             # get covariance matrices
-            even_pairs = [qubits[idx:idx + 2] for idx in
-                          np.arange(0, num_qubits - 1 , 2)]
+            even_pairs = [
+                qubits[idx:idx + 2] for idx in np.arange(0, num_qubits - 1, 2)
+            ]
             odd_pairs = [qubits[idx:idx + 2] for idx in
                          np.arange(1, num_qubits - 1, 2)]
             data = results_dict['xy_even'][circuit_idx]
@@ -131,8 +132,12 @@ def covariance_construction_from_opdm(opdm: np.ndarray,
         return opdm[i, q] * kdelta(j, p) - opdm[i, q] * opdm[p, j]
 
     for circuit_idx, permutation in enumerate(qubit_permutations):
-        e_real_pairs = [permutation[idx:idx + 2] for idx in np.arange(0, num_qubits - 1, 2)]
-        o_real_pairs = [permutation[idx:idx + 2] for idx in np.arange(1, num_qubits - 1, 2)]
+        e_real_pairs = [
+            permutation[idx:idx + 2] for idx in np.arange(0, num_qubits - 1, 2)
+        ]
+        o_real_pairs = [
+            permutation[idx:idx + 2] for idx in np.arange(1, num_qubits - 1, 2)
+        ]
         even_cov_mat = np.zeros((len(e_real_pairs), len(e_real_pairs)),
                                 dtype=float)
         for ridx, (i, j) in enumerate(e_real_pairs):
@@ -199,7 +204,9 @@ def resample_opdm(opdm: np.ndarray, var_dict: Dict) -> np.ndarray:  # testpragma
     qubit_permutations = ccu.generate_permutations(num_qubits)
     new_opdm = np.zeros_like(opdm)
     for circuit_idx, permutation in enumerate(qubit_permutations):
-        e_real_pairs = [permutation[idx:idx + 2] for idx in np.arange(0, num_qubits - 1, 2)]
+        e_real_pairs = [
+            permutation[idx:idx + 2] for idx in np.arange(0, num_qubits - 1, 2)
+        ]
         o_real_pairs = [permutation[idx:idx + 2] for idx in np.arange(1, num_qubits - 1, 2)]
 
         # get all the even and odd pairs
