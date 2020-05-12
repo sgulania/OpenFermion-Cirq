@@ -130,8 +130,10 @@ def xxyy_basis_rotation(pairs, clean_xxyy = False):
 def circuits_with_measurements(qubits, circuits, clean_xxyy = False):  # testpragma: no cover
     """Append the appropriate measurements to each of the permutation circuits"""
     num_qubits = len(qubits)
-    even_pairs = [qubits[idx:idx+2] for idx in np.arange(0, num_qubits-1, 2)]
-    odd_pairs = [qubits[idx:idx+2] for idx in np.arange(1, num_qubits-1, 2)]
+    even_pairs = [
+        qubits[idx:idx + 2] for idx in np.arange(0, num_qubits - 1, 2)
+    ]
+    odd_pairs = [qubits[idx:idx + 2] for idx in np.arange(1, num_qubits - 1, 2)]
     measure_labels = ['z', 'xy_even', 'xy_odd']
     all_circuits_with_measurements = {label: {} for label in measure_labels}
     for circuit_index in range(len(circuits)):
