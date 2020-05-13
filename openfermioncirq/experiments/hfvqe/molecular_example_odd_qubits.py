@@ -4,6 +4,7 @@ from typing import Tuple
 import numpy as np
 import openfermion as of
 import scipy as sp
+import openfermioncirq.experiments.hfvqe as hfvqe
 
 from openfermioncirq.experiments.hfvqe.gradient_hf import rhf_minimization
 from openfermioncirq.experiments.hfvqe.objective import (
@@ -13,7 +14,6 @@ from openfermioncirq.experiments.hfvqe.objective import (
 def make_h3_2_5() -> Tuple[RestrictedHartreeFockObjective, of.MolecularData, np.
                            ndarray, np.ndarray, np.ndarray]:
     # load the molecule from moelcular data
-    import openfermioncirq.experiments.hfvqe as hfvqe
     h3_2_5_path = os.path.join(
         hfvqe.__path__[0],
         'molecular_data/hydrogen_chains/h_3_p_sto-3g/bond_distance_2.5')
