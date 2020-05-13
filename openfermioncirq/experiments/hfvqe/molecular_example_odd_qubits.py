@@ -36,6 +36,5 @@ def make_h3_2_5() -> Tuple[RestrictedHartreeFockObjective, of.MolecularData, np.
     rhf_objective = RestrictedHartreeFockObjective(molecular_hamiltonian,
                                                    molecule.n_electrons)
 
-
     scipy_result = rhf_minimization(rhf_objective)
     return rhf_objective, molecule, scipy_result.x, obi, tbi
