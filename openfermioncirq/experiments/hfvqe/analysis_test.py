@@ -55,7 +55,8 @@ def test_energy_from_opdm_odd_qubit():
     parameters = np.array([0.1, 0.2])
     initial_opdm = np.diag([1] * 1 + [0] * 2)
     print(initial_opdm)
-    final_opdm = unitary(parameters) @ initial_opdm @ unitary(parameters).conj().T
+    final_opdm = unitary(parameters) @ initial_opdm @ unitary(
+        parameters).conj().T
     test_energy = energy_from_opdm(final_opdm,
                                    constant=molecule.nuclear_repulsion,
                                    one_body_tensor=obi,
